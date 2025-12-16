@@ -45,7 +45,15 @@ module CampusIvy
             password: password
           }
         end
-        CampusIvy::Object.new(response.body)
+
+        result = CampusIvy::Object.new(response.body)
+
+        if result.token
+          @client.config.token = result.token
+          @client.reset_connection
+        end
+
+        result
       end
 
       sig do

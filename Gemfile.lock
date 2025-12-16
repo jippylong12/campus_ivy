@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    campus_ivy (0.1.0)
+    campus_ivy (0.1.1)
       faraday (~> 2.0)
       sorbet-runtime
 

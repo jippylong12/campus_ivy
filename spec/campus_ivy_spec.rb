@@ -10,10 +10,10 @@ RSpec.describe CampusIvy do
   describe '.configure' do
     it 'allows setting configuration' do
       CampusIvy.configure do |config|
-        config.api_key = 'test_key'
+        config.token = 'test_key'
       end
 
-      expect(CampusIvy.configuration.api_key).to eq('test_key')
+      expect(CampusIvy.configuration.token).to eq('test_key')
     end
   end
 end

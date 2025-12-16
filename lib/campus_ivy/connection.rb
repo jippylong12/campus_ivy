@@ -10,7 +10,7 @@ module CampusIvy
         conn.request :json
 
         # Authentication header
-        conn.request :authorization, :Bearer, config.api_key if config.api_key
+        conn.request :authorization, :Bearer, config.token if config.token
 
         conn.response :json, content_type: /\bjson$/
 
@@ -19,6 +19,10 @@ module CampusIvy
 
         conn.adapter Faraday.default_adapter
       end
+    end
+
+    def reset_connection
+      @connection = nil
     end
   end
 end

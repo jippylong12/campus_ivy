@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe CampusIvy::Resources::Account do
-  let(:client) { CampusIvy::Client.new(api_key: 'test_api_key') }
+  let(:client) { CampusIvy::Client.new(token: 'test_api_key') }
   let(:account) { client.account }
   let(:base_url) { 'https://api.campusivy.com/v1' }
 
@@ -27,10 +27,10 @@ RSpec.describe CampusIvy::Resources::Account do
             password: 'password'
           }.to_json
         )
-        .to_return(status: 200, body: '{"access_token": "token123"}', headers: { 'Content-Type' => 'application/json' })
+        .to_return(status: 200, body: '{"token": "token123"}', headers: { 'Content-Type' => 'application/json' })
 
       response = account.token(**params)
-      expect(response.access_token).to eq('token123')
+      expect(response.token).to eq('token123')
     end
   end
 
@@ -52,10 +52,22 @@ RSpec.describe CampusIvy::Resources::Account do
             password: 'password'
           }.to_json
         )
-        .to_return(status: 200, body: '{"access_token": "token123"}', headers: { 'Content-Type' => 'application/json' })
+        .to_return(status: 200, body: '{"token": "token123"}', headers: { 'Content-Type' => 'application/json' })
 
       response = account.token_credentials(**params)
-      expect(response.access_token).to eq('token123')
+      expect(response.token).to eq('token123')
+    end
+
+    it 'updates the client token and resets connection on success' do
+      stub_request(:post, "#{base_url}/account/token/credentials")
+        .to_return(status: 200, body: '{"token": "new_token"}', headers: { 'Content-Type' => 'application/json' })
+
+      expect(client.config.token).to eq('test_api_key')
+      expect(client).to receive(:reset_connection).and_call_original
+
+      account.token_credentials(**params)
+
+      expect(client.config.token).to eq('new_token')
     end
   end
 
@@ -75,10 +87,10 @@ RSpec.describe CampusIvy::Resources::Account do
             clientKey: 'key'
           }.to_json
         )
-        .to_return(status: 200, body: '{"access_token": "token123"}', headers: { 'Content-Type' => 'application/json' })
+        .to_return(status: 200, body: '{"token": "token123"}', headers: { 'Content-Type' => 'application/json' })
 
       response = account.token_key(**params)
-      expect(response.access_token).to eq('token123')
+      expect(response.token).to eq('token123')
     end
   end
 

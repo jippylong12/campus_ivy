@@ -6,25 +6,25 @@ RSpec.describe CampusIvy::Client do
   describe '#initialize' do
     it 'initializes with global configuration' do
       CampusIvy.configure do |c|
-        c.api_key = 'global_key'
+        c.token = 'global_key'
       end
 
       client = CampusIvy::Client.new
-      expect(client.config.api_key).to eq('global_key')
+      expect(client.config.token).to eq('global_key')
     end
 
     it 'overrides global configuration with instance options' do
       CampusIvy.configure do |c|
-        c.api_key = 'global_key'
+        c.token = 'global_key'
       end
 
-      client = CampusIvy::Client.new(api_key: 'instance_key')
-      expect(client.config.api_key).to eq('instance_key')
+      client = CampusIvy::Client.new(token: 'instance_key')
+      expect(client.config.token).to eq('instance_key')
     end
   end
 
   describe '#connection' do
-    let(:client) { CampusIvy::Client.new(api_key: 'test_key', base_url: 'https://example.com') }
+    let(:client) { CampusIvy::Client.new(token: 'test_key', base_url: 'https://example.com') }
 
     it 'returns a Faraday connection' do
       expect(client.connection).to be_a(Faraday::Connection)
