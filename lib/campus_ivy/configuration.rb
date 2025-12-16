@@ -2,8 +2,8 @@
 
 module CampusIvy
   class Configuration
-    attr_accessor :api_key
-    attr_reader :sandbox, :base_url
+    attr_accessor :api_key, :base_url
+    attr_reader :sandbox
 
     def initialize
       @api_key = nil

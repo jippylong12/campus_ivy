@@ -5,6 +5,7 @@ require_relative 'connection'
 
 module CampusIvy
   class Client
+    extend T::Sig
     include CampusIvy::Connection
 
     attr_reader :config
@@ -25,9 +26,9 @@ module CampusIvy
       end
     end
 
-    # Resource accessors will go here
-    # def students
-    #   Resources::Students.new(self)
-    # end
+    sig { returns(CampusIvy::Resources::Account) }
+    def account
+      Resources::Account.new(self)
+    end
   end
 end

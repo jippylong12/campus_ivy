@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 require_relative 'campus_ivy/version'
+require 'sorbet-runtime'
 require_relative 'campus_ivy/configuration'
 require_relative 'campus_ivy/object'
+require_relative 'campus_ivy/resources/account'
 require_relative 'campus_ivy/client'
 
 module CampusIvy
