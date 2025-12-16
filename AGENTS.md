@@ -12,7 +12,12 @@
 - **Testing:** `rspec`, `webmock`, `vcr`.
 - **Linting:** `rubocop`.
 
-## 3. Mandatory Architecture Patterns
+## 3. Testing Requirements
+- **Verification:** The agent must run relevant tests for any work performed.
+- **Coverage:** New modules or functions must include comprehensive test suites (specs).
+- **Strategy:** Prefer integration testing with VCR over extensive unit mocking for API interactions.
+
+## 4. Mandatory Architecture Patterns
 The agent must implement the following four patterns without deviation:
 
 ### A. The Client & Resource Pattern
@@ -46,7 +51,7 @@ The agent must implement the following four patterns without deviation:
     client = CampusIvy::Client.new(api_key: 'abc')
     ```
 
-## 4. Coding Standards (Rubocop)
+## 5. Coding Standards (Rubocop)
 - Use keyword arguments for all optional parameters.
 - Keep methods under 15 lines.
 - No `puts` statements in library code (use a Logger if necessary).
