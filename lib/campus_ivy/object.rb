@@ -18,7 +18,7 @@ module CampusIvy
       )
     end
 
-    def method_missing(method, *args, &block)
+    def method_missing(method, *args, &)
       if encoding_aware? && method.to_s.end_with?('=')
         super
       else

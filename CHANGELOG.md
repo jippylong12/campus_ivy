@@ -1,5 +1,40 @@
 ## [Unreleased]
 
+## [1.0.0] - 2026-01-26
+
+### Added
+- **Attendance:** Added `Attendance` resource.
+- **Financial Aid (Awards & Disbursements):**
+  - `AwardAndDisbursementTransmission`
+  - `DisbursementBatchDetail`
+  - `Packaging`
+  - `StudentAwards`
+  - `StudentAwardTransmissionLog`
+  - `StudentDisbursementTransmissionLog`
+- **Financial Aid (COD/ISIR/R2T4):**
+  - `CODLog`, `CODResponseEC`, `CODResponsePN`, `CODResponseSP`
+  - `StudentISIR` (including `verification_request` and `update_status`)
+  - `StudentSelectedISIR`
+  - `StudentR2T4`
+- **Financial Aid (Analysis & Funding):**
+  - `NetPriceCalculator`, `PayListAnalysis`
+  - `StudentFAProgression`, `StudentFundingDetail`
+  - `StudentFundingEstimate`, `StudentRemainingBalance`
+- **Documents:**
+  - `DocumentAnalysis`, `DocumentInventory`, `DocumentStatus`
+  - `StudentDocument` (including import and blob search)
+  - `StudentDocumentHistory`, `StudentDocumentTags`
+- **System & User:**
+  - `FunctionalAreaTask`, `Health` (check & ping)
+  - `InstitutionBreaksByShift`, `NoteType`
+  - `RegisteredStudent` (list & create)
+  - `ServiceType`
+  - `StudentNote` (list & create)
+  - `StudentReference` (list & create)
+  - `UserLoginOption`, `UserNotification` (list & mark_read)
+  - `UserProfile`, `UserRole` (including xref)
+- **Client:** Exposed all new resources via `CampusIvy::Client` accessors.
+
 ## [0.1.0] - 2025-12-16
 
 ### Added

@@ -1,0 +1,35 @@
+AllCops:
+  TargetRubyVersion: 3.2
+  NewCops: enable
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    - 'campus_ivy.gemspec'
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Style/OpenStructUse:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Style/MissingRespondToMissing:
+  Enabled: false
+
+Gemspec/DevelopmentDependencies:
+  Enabled: false
